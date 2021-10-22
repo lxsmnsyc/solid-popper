@@ -1,8 +1,8 @@
 import {
-  TailwindPopover,
-  TailwindPopoverButton,
-  TailwindPopoverPanel,
-  TailwindTransition,
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+  Transition,
 } from 'solid-headless';
 import usePopper from 'solid-popper';
 import { createSignal, For, JSX } from 'solid-js';
@@ -140,10 +140,10 @@ export default function App(): JSX.Element {
 
   return (
     <div class="w-full flex items-center justify-center">
-      <TailwindPopover class="relative">
+      <Popover class="relative">
         {({ isOpen }) => (
           <>
-            <TailwindPopoverButton
+            <PopoverButton
               class={classNames(
                 isOpen() && 'text-opacity-90',
                 'text-white group bg-orange-700 px-3 py-2 rounded-md inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'
@@ -158,8 +158,8 @@ export default function App(): JSX.Element {
                 )}
                 aria-hidden="true"
               />
-            </TailwindPopoverButton>
-            <TailwindTransition
+            </PopoverButton>
+            <Transition
               show={isOpen()}
               enterDuration={200}
               leaveDuration={150}
@@ -170,7 +170,7 @@ export default function App(): JSX.Element {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <TailwindPopoverPanel ref={setPopper} unmount={false} class="absolute z-10 w-screen max-w-sm px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl">
+              <PopoverPanel ref={setPopper} unmount={false} class="absolute z-10 w-screen max-w-sm px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl">
                 <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div class="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                     <For each={solutions}>
@@ -210,11 +210,11 @@ export default function App(): JSX.Element {
                     </a>
                   </div>
                 </div>
-              </TailwindPopoverPanel>
-            </TailwindTransition>
+              </PopoverPanel>
+            </Transition>
           </>
         )}
-      </TailwindPopover>
+      </Popover>
     </div>
   );
 }
