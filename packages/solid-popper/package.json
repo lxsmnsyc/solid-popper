@@ -1,37 +1,17 @@
 {
   "version": "0.2.1",
-  "types": "dist/types/index.d.ts",
-  "main": "dist/cjs/production/index.js",
-  "module": "dist/esm/production/index.js",
+  "type": "module",
+  "types": "./dist/types/index.d.ts",
+  "main": "./dist/cjs/production/index.cjs",
+  "module": "./dist/esm/production/index.mjs",
   "exports": {
     ".": {
       "development": {
-        "require": "./dist/cjs/development/index.js",
-        "import": "./dist/esm/development/index.js"
+        "require": "./dist/cjs/development/index.cjs",
+        "import": "./dist/esm/development/index.mjs"
       },
-      "require": "./dist/cjs/production/index.js",
-      "import": "./dist/esm/production/index.js",
-      "types": "./dist/types/index.d.ts"
-    },
-    "./dev": {
-      "production": {
-        "require": "./dist/cjs/production/index.js",
-        "import": "./dist/esm/production/index.js"
-      },
-      "require": "./dist/cjs/development/index.js",
-      "import": "./dist/esm/development/index.js",
-      "types": "./dist/types/index.d.ts"
-    },
-    "./esm": {
-      "development": "./dist/esm/development/index.js",
-      "production": "./dist/esm/production/index.js",
-      "default": "./dist/esm/production/index.js",
-      "types": "./dist/types/index.d.ts"
-    },
-    "./cjs": {
-      "development": "./dist/cjs/development/index.js",
-      "production": "./dist/cjs/production/index.js",
-      "default": "./dist/cjs/production/index.js",
+      "require": "./dist/cjs/production/index.cjs",
+      "import": "./dist/esm/production/index.mjs",
       "types": "./dist/types/index.d.ts"
     }
   },
@@ -50,18 +30,18 @@
   ],
   "name": "solid-popper",
   "devDependencies": {
-    "@popperjs/core": "^2.10.2",
-    "@types/node": "^17.0.8",
-    "eslint": "^7.32.0",
-    "eslint-config-lxsmnsyc": "^0.3.0",
-    "pridepack": "^1.0.4",
-    "solid-js": "^1.2.6",
-    "tslib": "^2.3.1",
-    "typescript": "^4.5.4"
+    "@popperjs/core": "^2.11.6",
+    "@types/node": "^18.13.0",
+    "eslint": "^8.33.0",
+    "eslint-config-lxsmnsyc": "^0.4.8",
+    "pridepack": "^2.4.0",
+    "solid-js": "^1.6.10",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "@popperjs/core": "^2.10.2",
-    "solid-js": "^1.2.0"
+    "@popperjs/core": "^2.11",
+    "solid-js": "^1.2"
   },
   "scripts": {
     "prepublishOnly": "pridepack clean && pridepack build",
@@ -85,5 +65,8 @@
     "access": "public"
   },
   "author": "Alexis Munsayac",
-  "private": false
+  "private": false,
+  "typesVersions": {
+    "*": {}
+  }
 }

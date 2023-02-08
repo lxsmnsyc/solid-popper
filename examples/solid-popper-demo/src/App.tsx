@@ -37,7 +37,7 @@ function IconOne() {
         stroke-width="2"
       />
     </svg>
-  )
+  );
 }
 
 function IconTwo() {
@@ -63,7 +63,7 @@ function IconTwo() {
         stroke-width="2"
       />
     </svg>
-  )
+  );
 }
 
 function IconThree() {
@@ -83,7 +83,7 @@ function IconThree() {
       <rect x="29" y="16" width="2" height="20" fill="#FB923C" />
       <rect x="33" y="12" width="2" height="24" fill="#FB923C" />
     </svg>
-  )
+  );
 }
 
 const solutions = [
@@ -105,7 +105,7 @@ const solutions = [
     href: '##',
     icon: IconThree,
   },
-]
+];
 
 function ChevronDownIcon(props: JSX.IntrinsicElements['svg']): JSX.Element {
   return (
@@ -136,17 +136,30 @@ export default function App(): JSX.Element {
 
   usePopper(anchor, popper, {
     placement: 'auto',
+    modifiers: [
+      {
+        name: 'offset',
+        options: {
+          offset: [10, 20],
+        },
+      },
+      {
+        name: 'preventOverflow',
+        options: {
+        },
+      },
+    ],
   });
 
   return (
     <div class="w-full flex items-center justify-center">
-      <Popover class="relative">
+      <Popover defaultOpen={false} class="relative">
         {({ isOpen }) => (
           <>
             <PopoverButton
               class={classNames(
                 isOpen() && 'text-opacity-90',
-                'text-white group bg-orange-700 px-3 py-2 rounded-md inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'
+                'text-white group bg-orange-700 px-3 py-2 rounded-md inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75',
               )}
               ref={setAnchor}
             >
@@ -154,15 +167,13 @@ export default function App(): JSX.Element {
               <ChevronDownIcon
                 class={classNames(
                   isOpen() && 'text-opacity-70',
-                  'ml-2 h-5 w-5 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150'
+                  'ml-2 h-5 w-5 text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150',
                 )}
                 aria-hidden="true"
               />
             </PopoverButton>
             <Transition
               show={isOpen()}
-              enterDuration={200}
-              leaveDuration={150}
               enter="transition duration-200"
               enterFrom="opacity-0 translate-y-1"
               enterTo="opacity-100 translate-y-0"
@@ -170,7 +181,7 @@ export default function App(): JSX.Element {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <PopoverPanel ref={setPopper} unmount={false} class="absolute z-10 w-screen max-w-sm px-4 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl">
+              <PopoverPanel ref={setPopper} unmount={false} class="absolute z-10 w-screen max-w-sm px-4 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl">
                 <div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div class="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                     <For each={solutions}>
