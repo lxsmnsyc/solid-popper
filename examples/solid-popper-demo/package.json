@@ -1,6 +1,6 @@
 {
   "name": "solid-popper-demo",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -19,7 +19,7 @@
     "@popperjs/core": "^2.10.2",
     "solid-headless": "^0.13.1",
     "solid-js": "^1.6.10",
-    "solid-popper": "0.2.1",
+    "solid-popper": "0.3.0",
     "tailwindcss": "^3.2.4"
   },
   "private": true,
