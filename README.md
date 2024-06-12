@@ -17,8 +17,8 @@ import { createSignal } from 'solid-js';
 import usePopper from 'solid-popper';
 
 function Component() {
-  const [anchor, setAnchor] = createSignal();
-  const [popper, setPopper] = createSignal();
+  const [anchor, setAnchor] = createSignal<HTMLElement>();
+  const [popper, setPopper] = createSignal<HTMLElement>();
 
   usePopper(anchor, popper, {
     placement: 'auto',
