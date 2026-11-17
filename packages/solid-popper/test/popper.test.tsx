@@ -47,6 +47,23 @@ describe('usePopper', () => {
     expect(instance()?.state.options.strategy).toBe('fixed');
   });
 
+  it('calls onFirstUpdate after the first update', async () => {
+    const states: string[] = [];
+    createRoot(() =>
+      usePopper(
+        () => createElementInBody('button'),
+        () => createElementInBody(),
+        {
+          onFirstUpdate(state) {
+            states.push(state.placement ?? '');
+          },
+        },
+      ),
+    );
+    flush();
+    await expect.poll(() => states).toEqual(['bottom']);
+  });
+
   it('tracks options that are getters', () => {
     const [placement, setPlacement] = createSignal<'top' | 'left'>('top');
     const instance = createRoot(() =>

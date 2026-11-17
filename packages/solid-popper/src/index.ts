@@ -2,6 +2,15 @@ import type { Instance, Options } from '@popperjs/core';
 import { createPopper } from '@popperjs/core';
 import { createEffect, createSignal } from 'solid-js';
 
+function readOptions(options: Partial<Options>): Partial<Options> {
+  return {
+    onFirstUpdate: options.onFirstUpdate,
+    placement: options.placement ?? 'bottom',
+    modifiers: options.modifiers ?? [],
+    strategy: options.strategy ?? 'absolute',
+  };
+}
+
 export default function usePopper(
   targetElement: () => HTMLElement | undefined | null,
   popperElement: () => HTMLElement | undefined | null,
@@ -18,7 +27,9 @@ export default function usePopper(
         setCurrent(undefined);
         return undefined;
       }
-      const instance = createPopper(target, popper, {});
+      // Popper reads `onFirstUpdate` only from the options it is created with.
+      // The effect step is untracked, so reading the options here adds no dependency.
+      const instance = createPopper(target, popper, readOptions(options));
       setCurrent(instance);
 
       return () => {
@@ -29,13 +40,7 @@ export default function usePopper(
 
   // Each option is read in the compute step, so a getter on `options` is tracked.
   createEffect(
-    () => ({
-      instance: current(),
-      onFirstUpdate: options.onFirstUpdate,
-      placement: options.placement ?? 'bottom',
-      modifiers: options.modifiers ?? [],
-      strategy: options.strategy ?? 'absolute',
-    }),
+    () => ({ instance: current(), ...readOptions(options) }),
     ({ instance, ...next }) => {
       if (instance) {
         // Rethrown outside the promise so a failed update is not swallowed.
