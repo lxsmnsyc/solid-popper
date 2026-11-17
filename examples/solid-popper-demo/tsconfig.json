@@ -1,19 +1,15 @@
 {
+  "include": ["src", "vite.config.ts"],
   "compilerOptions": {
-    "target": "ESNext",
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
-    "moduleResolution": "Node",
+    "target": "ES2022",
+    "moduleResolution": "Bundler",
     "strict": true,
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "noEmit": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
     "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-  },
-  "include": ["./src"]
+    "jsxImportSource": "@solidjs/web",
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["vite/client"]
+  }
 }

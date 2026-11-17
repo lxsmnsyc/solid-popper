@@ -1,72 +1,68 @@
 {
+  "name": "solid-popper",
   "version": "0.3.0",
-  "type": "module",
-  "types": "./dist/types/index.d.ts",
-  "main": "./dist/cjs/production/index.cjs",
-  "module": "./dist/esm/production/index.mjs",
-  "exports": {
-    ".": {
-      "development": {
-        "require": "./dist/cjs/development/index.cjs",
-        "import": "./dist/esm/development/index.mjs"
-      },
-      "require": "./dist/cjs/production/index.cjs",
-      "import": "./dist/esm/production/index.mjs",
-      "types": "./dist/types/index.d.ts"
-    }
+  "private": false,
+  "description": "SolidJS bindings for Popper.js",
+  "keywords": [
+    "popover",
+    "popper",
+    "popper.js",
+    "solid",
+    "solid-js",
+    "tooltip"
+  ],
+  "homepage": "https://github.com/lxsmnsyc/solid-popper/tree/main/packages/solid-popper",
+  "bugs": {
+    "url": "https://github.com/lxsmnsyc/solid-popper/issues"
+  },
+  "license": "MIT",
+  "author": "Alexis Munsayac",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lxsmnsyc/solid-popper.git"
   },
   "files": [
     "dist",
     "src"
   ],
-  "engines": {
-    "node": ">=10"
-  },
-  "license": "MIT",
-  "keywords": [
-    "pridepack",
-    "solid-js",
-    "popper"
-  ],
-  "name": "solid-popper",
-  "devDependencies": {
-    "@popperjs/core": "^2.11.6",
-    "@types/node": "^18.13.0",
-    "eslint": "^8.33.0",
-    "eslint-config-lxsmnsyc": "^0.4.8",
-    "pridepack": "^2.4.0",
-    "solid-js": "^1.6.10",
-    "tslib": "^2.5.0",
-    "typescript": "^4.9.5"
-  },
-  "peerDependencies": {
-    "@popperjs/core": "^2.11",
-    "solid-js": "^1.2"
-  },
-  "scripts": {
-    "prepublishOnly": "pridepack clean && pridepack build",
-    "build": "pridepack build",
-    "type-check": "pridepack check",
-    "lint": "pridepack lint",
-    "test": "pridepack test --passWithNoTests",
-    "clean": "pridepack clean",
-    "watch": "pridepack watch"
-  },
-  "description": "SolidJS bindings for Popper.js",
-  "repository": {
-    "url": "https://github.com/lxsmnsyc/solid-popper.git",
-    "type": "git"
-  },
-  "homepage": "https://github.com/lxsmnsyc/solid-popper/tree/main/packages/solid-popper",
-  "bugs": {
-    "url": "https://github.com/lxsmnsyc/solid-popper/issues"
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
-  "author": "Alexis Munsayac",
-  "private": false,
-  "typesVersions": {
-    "*": {}
+  "scripts": {
+    "build": "tsdown",
+    "prepublishOnly": "tsdown",
+    "watch": "tsdown --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@popperjs/core": "2.11.8",
+    "@solidjs/vite-plugin": "3.0.0",
+    "@solidjs/web": "2.0.0",
+    "@types/node": "^26.6.6",
+    "@vitest/browser-playwright": "^5.1.0",
+    "playwright": "^1.65.1",
+    "solid-js": "2.0.0",
+    "tsdown": "^0.23.7",
+    "tslib": "^2.9.1",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  },
+  "peerDependencies": {
+    "@popperjs/core": "^2.11.8",
+    "solid-js": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
