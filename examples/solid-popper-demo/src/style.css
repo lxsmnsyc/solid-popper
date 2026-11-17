@@ -1,3 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #fb923c, #db2777);
+}
+
+.anchor {
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  border-radius: 0.375rem;
+  background: #c2410c;
+  color: white;
+  font-size: 1rem;
+}
+
+.panel {
+  width: 18rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: white;
+  box-shadow: 0 10px 15px rgb(0 0 0 / 0.2);
+}
